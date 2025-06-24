@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "tsdown src/index.ts --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,6 +11,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "eslint": "^9.29.0"
+    "eslint": "^9.29.0",
+    "tsdown": "^0.12.8",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@momei-x/create": "^2.0.0"
   }
 }
