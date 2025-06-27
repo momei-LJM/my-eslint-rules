@@ -1,18 +1,23 @@
-const plugin = {
-  meta: {
-    name: "eslint-plugin-example",
-    version: "1.2.3",
-  },
-  processors: {
-    "processor-name": {
-      preprocess(text, filename) {
-        /* ... */
-      },
-      postprocess(messages, filename) {
-        /* ... */
-      },
+import { defineConfig } from "eslint/config";
+import { eslintPluginLocalStorage } from "./dist/index.js";
+import tsEslintParaser from "@typescript-eslint/parser";
+export default defineConfig([
+  {
+    rules: {
+      semi: "error",
+      "prefer-const": "error",
     },
   },
-};
-
-export default plugin;
+  {
+    files: ["**/*.{js,ts,jsx,tsx}"],
+    languageOptions: {
+      parser: tsEslintParaser,
+    },
+    plugins: {
+      any: eslintPluginLocalStorage,
+    },
+    rules: {
+      "any/no-localstorage": ["error", { globals: "@/storage" }],
+    },
+  },
+]);

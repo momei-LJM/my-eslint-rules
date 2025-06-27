@@ -2,6 +2,7 @@
   "name": "my-eslint-rules",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "tsdown src/index.ts --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +12,9 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/config-helpers": "^0.3.0",
+    "@types/node": "^24.0.3",
+    "@typescript-eslint/parser": "^8.35.0",
     "eslint": "^9.29.0",
     "tsdown": "^0.12.8",
     "tsx": "^4.20.3",
