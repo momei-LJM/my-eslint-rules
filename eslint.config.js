@@ -1,6 +1,6 @@
 import { defineConfig } from "eslint/config";
-import { eslintPluginLocalStorage } from "./dist/index.js";
-import tsEslintParaser from "@typescript-eslint/parser";
+
+import BookingEslint from "./src/lib/useLocalStorageRule/index.js";
 export default defineConfig([
   {
     rules: {
@@ -8,16 +8,8 @@ export default defineConfig([
       "prefer-const": "error",
     },
   },
-  {
-    files: ["**/*.{js,ts,jsx,tsx}"],
-    languageOptions: {
-      parser: tsEslintParaser,
-    },
-    plugins: {
-      any: eslintPluginLocalStorage,
-    },
-    rules: {
-      "any/no-localstorage": ["error", { globals: "@/storage" }],
-    },
-  },
+  ...BookingEslint.createLocalEslintRule({
+    msg: '请在 "@/storage" 模块中包装改方法',
+    ignores: ["src/test-ignore/**"],
+  }),
 ]);

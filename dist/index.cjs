@@ -6,18 +6,19 @@ const plugin = {
 	rules: { "no-localstorage": {
 		meta: { schema: [{
 			type: "object",
-			properties: { globals: { type: "string" } },
+			properties: { msg: { type: "string" } },
 			additionalProperties: false
 		}] },
 		create(context) {
 			const option = context.options[0];
 			return { MemberExpression(node) {
-				let objectName = void 0;
+				let objectName;
 				if (node.object.type === "Identifier") objectName = node.object.name;
 				else if (node.object.type === "TSAsExpression" && node.object.expression.type === "Identifier") objectName = node.object.expression.name;
-				if (objectName === "localStorage") context.report({
+				else if (node.object.type === "MemberExpression" && node.object.object.type === "Identifier" && node.object.object.name === "window" && node.object.property.type === "Identifier" && node.object.property.name === "localStorage") objectName = "window.localStorage";
+				if (objectName === "localStorage" || objectName === "window.localStorage") context.report({
 					node,
-					message: `Avoid using localstorage globally. Instead, import the existing wrapper method from "${option.globals}".`
+					message: `(订舱eslint): ${option.msg}.`
 				});
 			} };
 		}
