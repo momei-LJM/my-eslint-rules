@@ -1,7 +1,9 @@
 import type { Rule } from 'eslint';
+import path from 'path';
 
-const kebabCaseRegex = /^[a-z0-9]+(-[a-z0-9]+)*\.[a-z]+$/i
-const pascalCaseRegex = /^[A-Z][a-zA-Z0-9]*\.[a-z]+$/;
+const kebabCaseRegex = /^[a-z]+(-[a-z]+)*(\.[a-z]+)?$/;
+const pascalCaseRegex = /^[A-Z][a-zA-Z0-9]*(\.[a-z]+)?$/;
+
 
 const noLocalStorageRule: Rule.RuleModule = {
   meta: {
@@ -19,28 +21,27 @@ const noLocalStorageRule: Rule.RuleModule = {
     ],
   },
   create(context) {
-    const filename = context.filename
-
+    const filename = path.basename(context.filename);
     const caseType = context.options?.[0];
 
-    if (!caseType) { return {} }
+    if (!caseType) { return {}; }
 
     if (caseType === "kebab" && !kebabCaseRegex.test(filename)) {
       context.report({
         message: 'File name should be in kebab-case.',
         loc: { line: 1, column: 0 },
-      })
+      });
     }
     if (caseType === "pascal" && pascalCaseRegex.test(filename)) {
       context.report({
         message: 'File name should not be in PascalCase.',
         loc: { line: 1, column: 0 },
-      })
+      });
     }
     return {
 
-    }
+    };
   },
-}
+};
 
 export default noLocalStorageRule;

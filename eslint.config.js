@@ -11,5 +11,6 @@ export default defineConfig([
   ...createStubbornEslintRule({
     msg: '请在 "@/storage" 模块中包装该方法',
     ignores: ["src/test-ignore/**"],
+    include: ["src/test/**/*.{js,ts,jsx,tsx}"],
   }),
 ]);

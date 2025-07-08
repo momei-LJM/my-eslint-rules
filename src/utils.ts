@@ -1,9 +1,10 @@
 import plugin from './index';
-import tsEslintParaser from '@typescript-eslint/parser'
+import tsEslintParaser from '@typescript-eslint/parser';
 
 interface CreateRuleOptions {
   msg: string;
   ignores?: string[];
+  include?: string[];
 }
 
 /**
@@ -14,10 +15,10 @@ interface CreateRuleOptions {
  * @returns {Array<Object>} ESLint Flat Config 配置数组
  */
 export const createStubbornEslintRule = (options: CreateRuleOptions) => {
-  const { msg, ignores = [] } = options;
+  const { msg, ignores = [], include = undefined } = options;
 
   const baseConfig = {
-    files: ['**/*.{js,ts,jsx,tsx}'],
+    files: include ?? ['**/*.{js,ts,jsx,tsx}'],
     languageOptions: {
       parser: tsEslintParaser,
     },
