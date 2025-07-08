@@ -1,7 +1,7 @@
 {
-  "name": "my-eslint-rules",
+  "name": "@momei-x/stubborn-eslint-rules",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
   "type": "module",
   "scripts": {
     "dev": "tsdown src/index.ts --watch",
@@ -9,6 +9,16 @@
     "test": "tsx tests/rules/no-localstorage.test.ts",
     "test:watch": "tsx --watch tests/rules/no-localstorage.test.ts"
   },
+  "module": "dist/index.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -20,9 +30,8 @@
     "eslint": "^9.29.0",
     "tsdown": "^0.12.8",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
-  },
-  "dependencies": {
+    "typescript": "^5.8.3",
     "@momei-x/create": "^2.0.0"
-  }
+  },
+  "dependencies": {}
 }
