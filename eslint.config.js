@@ -1,6 +1,6 @@
 import { defineConfig } from "eslint/config";
+import { createStubbornEslintRule } from "./dist/index.js";
 
-import BookingEslint from "./src/lib/useLocalStorageRule/index.js";
 export default defineConfig([
   {
     rules: {
@@ -8,8 +8,8 @@ export default defineConfig([
       "prefer-const": "error",
     },
   },
-  ...BookingEslint.createLocalEslintRule({
-    msg: '请在 "@/storage" 模块中包装改方法',
+  ...createStubbornEslintRule({
+    msg: '请在 "@/storage" 模块中包装该方法',
     ignores: ["src/test-ignore/**"],
   }),
 ]);

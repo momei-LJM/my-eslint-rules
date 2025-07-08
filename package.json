@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "tsdown src/index.ts --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsdown src/index.ts",
+    "test": "tsx tests/rules/no-localstorage.test.ts",
+    "test:watch": "tsx --watch tests/rules/no-localstorage.test.ts"
   },
   "keywords": [],
   "author": "",
