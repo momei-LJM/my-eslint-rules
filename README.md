@@ -71,6 +71,62 @@ storage.setItem("key", "value");
 storage.getItem("key");
 ```
 
+### `stubborn/filename-case`
+
+约束文件名的命名规范，支持 `kebab-case` 和 `PascalCase`。
+
+#### 选项
+
+- `case` (string): 文件名的命名规范，可选值为：
+  - `"kebab"`：短横线命名法，例如 `file-name.js`
+  - `"pascal"`：帕斯卡命名法，例如 `FileName.js`
+
+#### 错误示例
+
+##### 配置为 `kebab-case`
+
+```javascript
+// ❌ 错误
+FileName.js
+fileName.js
+file--name.js
+
+// ✅ 正确
+file-name.js
+my-component.ts
+```
+
+##### 配置为 `PascalCase`
+
+```javascript
+// ❌ 错误
+file - name.js;
+fileName.js;
+FILEName.js;
+
+// ✅ 正确
+FileName.js;
+MyComponent.ts;
+```
+
+#### 配置示例
+
+```javascript
+import plugin from "eslint-plugin-stubborn";
+
+export default defineConfig([
+  {
+    files: ["**/*.{js,ts,jsx,tsx}"],
+    plugins: {
+      stubborn: plugin,
+    },
+    rules: {
+      "stubborn/filename-case": ["error", "kebab"],
+    },
+  },
+]);
+```
+
 ## 开发
 
 ### 运行测试
@@ -90,11 +146,3 @@ npm run build
 ```bash
 npm run dev
 ```
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 许可证
-
-ISC
