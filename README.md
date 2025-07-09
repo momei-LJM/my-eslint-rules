@@ -1,6 +1,6 @@
 # ESLint Plugin Stubborn
 
-一个自定义的 ESLint 插件，用于限制直接使用 `localStorage`，建议使用统一的存储模块。
+一个自定义的 ESLint 插件，用于限制直接使用 `localStorage` 和约束文件名命名规范，建议使用统一的存储模块和规范化的文件命名。
 
 ## 安装
 
@@ -40,6 +40,12 @@ export default defineConfig([
         "error",
         {
           msg: "请使用 @/storage 模块替代直接使用 localStorage",
+        },
+      ],
+      "stubborn/filename-case": [
+        "error",
+        {
+          case: "kebab", // 或 "pascal"
         },
       ],
     },
