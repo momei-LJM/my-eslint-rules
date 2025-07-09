@@ -9,7 +9,8 @@
     "test": "tsx tests/rules/no-localstorage.test.ts",
     "test:watch": "tsx --watch tests/rules/no-localstorage.test.ts",
     "prepublishOnly": "npm run test",
-    "changlog": "standard-version"
+    "changlog": "standard-version",
+    "pub": "pnpm changelog && pnpm publish --access public"
   },
   "publishConfig": {
     "access": "public"
