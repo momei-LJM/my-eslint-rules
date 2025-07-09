@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-npm install --save-dev eslint-plugin-stubborn
+npm install --save-dev @momei-x/stubborn-eslint-rules
 ```
 
 ## 使用
@@ -14,7 +14,7 @@ npm install --save-dev eslint-plugin-stubborn
 
 ```javascript
 import { defineConfig } from "eslint/config";
-import { createStubbornEslintRule } from "eslint-plugin-stubborn/utils";
+import { createStubbornEslintRule } from "@momei-x/stubborn-eslint-rules";
 
 export default defineConfig([
   ...createStubbornEslintRule({
@@ -27,7 +27,7 @@ export default defineConfig([
 ### 手动配置
 
 ```javascript
-import plugin from "eslint-plugin-stubborn";
+import plugin from "@momei-x/stubborn-eslint-rules";
 
 export default defineConfig([
   {
@@ -118,7 +118,7 @@ MyComponent.ts;
 #### 配置示例
 
 ```javascript
-import plugin from "eslint-plugin-stubborn";
+import plugin from "@momei-x/stubborn-eslint-rules";
 
 export default defineConfig([
   {
