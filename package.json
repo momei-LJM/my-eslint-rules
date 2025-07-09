@@ -1,6 +1,6 @@
 {
   "name": "@momei-x/stubborn-eslint-rules",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "./dist/index.cjs",
   "type": "module",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "tsdown src/index.ts",
     "test": "tsx tests/rules/no-localstorage.test.ts",
     "test:watch": "tsx --watch tests/rules/no-localstorage.test.ts",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
+    "changlog": "standard-version"
   },
   "publishConfig": {
     "access": "public"
@@ -29,13 +30,13 @@
   "description": "",
   "devDependencies": {
     "@eslint/config-helpers": "^0.3.0",
+    "@momei-x/create": "^2.0.0",
     "@types/node": "^24.0.3",
     "@typescript-eslint/parser": "^8.35.0",
     "eslint": "^9.29.0",
+    "standard-version": "^9.5.0",
     "tsdown": "^0.12.8",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3",
-    "@momei-x/create": "^2.0.0"
-  },
-  "dependencies": {}
+    "typescript": "^5.8.3"
+  }
 }
