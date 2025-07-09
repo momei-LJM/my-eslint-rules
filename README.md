@@ -14,10 +14,10 @@ npm install --save-dev eslint-plugin-stubborn
 
 ```javascript
 import { defineConfig } from "eslint/config";
-import { createLocalEslintRule } from "eslint-plugin-stubborn/utils";
+import { createStubbornEslintRule } from "eslint-plugin-stubborn/utils";
 
 export default defineConfig([
-  ...createLocalEslintRule({
+  ...createStubbornEslintRule({
     msg: "请使用 @/storage 模块替代直接使用 localStorage",
     ignores: ["tests/**", "*.config.js"], // 可选：忽略的文件
   }),
